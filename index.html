@@ -1,0 +1,214 @@
+
+    <head>
+        <style type="text/css">
+                    html, body {
+            overflow-x: hidden;
+            overflow-y: hidden; 
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: black;
+            background-image: url('galaxy.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            z-index: -2;
+            }
+ 
+            #quote {
+              color: white;
+            }
+
+            .center {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              min-height: 100vh;
+            }
+
+            .wheel {
+              width: 500px;
+              height: 500px;
+              position: relative;
+              cursor: pointer;
+            }
+
+            .wheel .wheel-child {
+              border-radius: 1000px;
+              height: 100%;
+              width: 100%;
+              background-size: cover;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+            
+            
+            #wheellabels {
+              background-image: url(wheellabels.png);
+              width: 127%;
+              height: 127%;
+              left: -14%;
+              top: -13%;
+              background-size: cover;
+              position: absolute;
+            }
+            .wheel .antoniaimg {
+                background-image: url(antonia.png);
+                margin-top: -1%;
+                margin-left: -1%;
+                height: 104%;
+            }   
+            .wheel .wheelimg {
+              background-image: url("wheelbg.png");
+            }
+            .wheel .wheelcoverimg {
+              background-image: url("wheelcoverlarge.png");
+            
+            }
+            .wheel .wheelsignsimg {
+              background-image: url("wheelsigns.png");              
+            }
+            .wheel .wheellinesimg {
+              background-image: url("wheellines.png");  
+                
+            }
+           
+            
+            .wheel .wheeltext.center {
+              height: 100%;
+              width: 70%;
+              /* padding: 100px; */
+              position: relative;
+              min-height: auto;
+              text-align: center;
+              margin: auto;
+              font-family: Helvetica Neue;
+              font-size: 30px;
+              line-height: 1.35;
+              text-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
+              opacity: 0;
+              }
+        </style>
+        <script src="velocity.min.js"></script>            
+        <script src="velocity.ui.min.js"></script>            
+
+        <script type="text/javascript">
+
+
+var quotes = [
+"Antonia is the most beautiful person in the world", 
+"Antonia's face was designed by heaven's most talented fairies",
+"Antonia's mind processes information at 10x the speed of other people's minds",
+"Antonia vibrates in Pythagorean ratios that transmute all surrounding frequencies into harmony",
+"Scales don't work for Antonia. They can't detect one millionth of an ounce.",
+"Antonia's feet don't touch the ground because gravity doesn't effect objects with zero mass",
+"Antonia has a halo made out of pixie dust",
+ "Antonia has a magic compass in her head that can navigate anywhere", 
+ "Antonia has a heart made of Ametrine filled with 24k gold",
+ "Antonia is kind and sweet and everyone she knows is lucky to be around her", 
+ "Intelligent people know that Antonia is more intelligent than they are", 
+ "Antonia is always the most attractive person in the yoga studio",
+ "Antonia is always the most attractive person on the dance floor",
+ "Antonia writes songs that break open the boundaries of the universe", 
+ "Antonia's eyes contain the light of the sun"
+ 
+ ];
+
+ shuffle(quotes);
+
+function random(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+
+var position = 0;
+var quotePosition = 0;
+var quoteMax = quotes.length - 1;
+
+function genQuote() {
+  if (quotePosition > quoteMax){
+    shuffle(quotes);
+    quotePosition = 0;
+  }
+
+  var position2 = random(1,360);
+  var position3 = random(1,360);
+  var position4 = random(1,360);
+  var position5 = random(1,360);
+  var position6 = random(1,360);
+
+
+
+
+  Velocity(document.getElementsByClassName("wheellinesimg"), { opacity: 1 }, { duration: 500, easing: 'linear' });
+
+  var mySequence = [
+  { e: Velocity(document.getElementsByClassName("phrase"), { opacity: 0 }, { duration: 500, easing: 'linear' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: ["rotateZ("+position2+"deg)", "rotateZ("+position+"deg)"] }, { duration: 1000, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position3+"deg)" }, { duration: 500, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position3+"deg)" }, { duration: 500, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position4+"deg)" }, { duration: 500, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position5+"deg)" }, { duration: 500, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position6+"deg)" }, { duration: 500, easing: 'ease-in' })},
+  { e: Velocity(document.getElementsByClassName("wheellinesimg"), { opacity: 0.3 }, { duration: 50, easing: 'linear' })},
+  { e: Velocity(document.getElementsByClassName("phrase"), { opacity: 1 }, {duration: 500, easing: 'linear' })},
+
+
+];
+position = position6;
+
+setTimeout(function(){  
+  console.log(quotePosition);
+  document.getElementById('quote').innerHTML = quotes[quotePosition];
+  quotePosition++;
+}, 2000);
+
+}
+
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+      <div class="center">
+        <div id="wheel" class="wheel" onclick="genQuote()">
+          <div id="wheellabels" class="wheel rotate"></div>
+
+          <div class="wheel-child antoniaimg"></div>
+          <div class="wheel-child wheelimg rotate"></div>
+          <div class="wheel-child wheelcoverimg rotate phrase"></div>
+          <div class="wheel-child wheellinesimg rotate"></div>
+          <div class="wheel-child wheelsignsimg rotate"></div>
+          <div  class="wheel-child wheeltext center phrase">
+            <p id="quote">"the people who are crazy enough to think they can change the world are the ones who do." <br/>- Steve Jobs</p>
+          </div>
+
+          </div>
+        </div>
+      
