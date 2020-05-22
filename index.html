@@ -65,12 +65,32 @@
                 margin-left: -1%;
                 height: 104%;
             }   
+            .wheel .antoniaimg2 {
+              background-image: url(antonia2.png);
+              top: -3%;
+            }
+
             .wheel .wheelimg {
               background-image: url("wheelbg.png");
             }
             .wheel .wheelcoverimg {
               background-image: url("wheelcoverlarge.png");
             
+            }
+            .wheel .antoniaface {
+              background-image: url("antoniaface.png");
+              top: 5.5%;
+              left: 9.5%;
+              height: 91%;
+              width: 91%;
+            }
+            .wheel .antoniafacegradient {
+              background-image: url("antoniafacegradient.png");
+              top: 5.5%;
+              left: 9.5%;
+              height: 91%;
+              width: 91%;
+              opacity: 0;
             }
             .wheel .wheelsignsimg {
               background-image: url("wheelsigns.png");              
@@ -190,9 +210,8 @@ function genQuote() {
   { e: Velocity(document.getElementsByClassName("rotate"), { transform: "rotateZ("+position6+"deg)" }, { duration: 500, easing: 'ease-in' })},
   { e: Velocity(document.getElementsByClassName("wheellinesimg"), { opacity: 0.3 }, { duration: 50, easing: 'linear' })},
   { e: Velocity(document.getElementsByClassName("phrase"), { opacity: 1 }, {duration: 500, easing: 'linear' })},
-
-
 ];
+
 position = position6;
 
 setTimeout(function(){  
@@ -216,15 +235,14 @@ setTimeout(function(){
         <div id="wheel" class="wheel" onclick="genQuote()">
           <div id="wheellabels" class="wheel rotate"></div>
 
-          <div class="wheel-child antoniaimg"></div>
+         <div class="wheel-child antoniaimg2"></div>
+       <!-- <div class="wheel-child antoniaface"></div>
+       <div class="wheel-child antoniafacegradient"></div> -->
           <div class="wheel-child wheelimg rotate"></div>
-          <div class="wheel-child wheelcoverimg rotate phrase"></div>
+          <div class="wheel-child wheelcoverimg phrase rotate"></div>        
           <div class="wheel-child wheellinesimg rotate"></div>
           <div class="wheel-child wheelsignsimg rotate"></div>
-          <div  class="wheel-child wheeltext center phrase">
-            <p id="quote">"the people who are crazy enough to think they can change the world are the ones who do." <br/>- Steve Jobs</p>
-          </div>
-
+          <div  class="wheel-child wheeltext center phrase"><p id="quote"></p></div>
           </div>
         </div>
       </div>
