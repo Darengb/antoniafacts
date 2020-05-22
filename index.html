@@ -1,7 +1,11 @@
 
-    <head>
+    <html><head>
         <style type="text/css">
                     html, body {
+                      padding: 0;
+                      margin: 0;
+                    }
+                      .background {
             overflow-x: hidden;
             overflow-y: hidden; 
             height: 100%;
@@ -91,6 +95,17 @@
               text-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
               opacity: 0;
               }
+              @media (max-width: 480px){
+
+                #wheel {
+                    height: 750px;
+                    width: 750px;
+                }
+
+              }
+
+
+             
         </style>
         <script src="velocity.min.js"></script>            
         <script src="velocity.ui.min.js"></script>            
@@ -196,6 +211,7 @@ setTimeout(function(){
         </script>
     </head>
     <body>
+      <div class="background"></div>
       <div class="center">
         <div id="wheel" class="wheel" onclick="genQuote()">
           <div id="wheellabels" class="wheel rotate"></div>
@@ -211,4 +227,6 @@ setTimeout(function(){
 
           </div>
         </div>
-      
+      </div>
+      </body>
+      </html>
